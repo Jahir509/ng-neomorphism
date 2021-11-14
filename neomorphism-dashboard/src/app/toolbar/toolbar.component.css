@@ -1,0 +1,146 @@
+.content {
+  width: 100%;
+  height: 60px;
+  display: flex;
+}
+
+.boxOne,
+.boxTwo,
+.boxThree {
+  width: 100%;
+}
+
+.boxOne {
+  background: #f1f1f1;
+}
+
+.boxTwo {
+  background: #32383c;
+}
+
+.boxThree {
+  background: #add8e6;
+}
+
+.boxOne p,
+.boxTwo p,
+.boxThree p {
+  position: relative;
+  top: 25%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.boxOne p {
+  box-shadow: 6px 6px 12px #c9c9c9, -6px -6px 12px #fff;
+}
+
+.boxTwo p {
+  box-shadow: 6px 6px 12px #0000005a, -6px -6px 12px #7c7c7c8a;
+}
+
+.boxThree p {
+  box-shadow: 6px 6px 12px #62777e, -6px -6px 12px #cdf3ff;
+}
+
+.lineOne,
+.lineTwo,
+.lineThree {
+  width: 45%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0ms 300ms;
+}
+
+.lineOne::before,
+.lineTwo::before,
+.lineThree::before {
+  content: "";
+  width: 100%;
+  bottom: 20px;
+  transition: bottom 300ms 300ms ease, transform 300ms ease;
+}
+
+.lineOne::after,
+.lineTwo::after,
+.lineThree::after {
+  content: "";
+  width: 100%;
+  top: 20px;
+  transition: top 300ms 300ms ease, transform 300ms ease;
+}
+
+p.active .lineOne::after,
+p.active .lineTwo::after,
+p.active .lineThree::after {
+  top: 0;
+  transform: rotate(135deg);
+  transition: top 300ms ease, transform 300ms 300ms ease;
+}
+
+p.active .lineOne,
+p.active .lineTwo,
+p.active .lineThree {
+  background: transparent;
+  box-shadow: none;
+}
+
+p.active .lineOne::before,
+p.active .lineTwo::before,
+p.active .lineThree::before {
+  bottom: 0;
+  transform: rotate(-135deg);
+  transition: bottom 300ms ease, transform 300ms 300ms ease;
+}
+
+.lineOne,
+.lineOne::before,
+.lineOne::after,
+.lineTwo,
+.lineTwo::before,
+.lineTwo::after,
+.lineThree,
+.lineThree::before,
+.lineThree::after {
+  position: absolute;
+  height: 8px;
+  border-radius: 5px;
+}
+
+.lineOne,
+.lineOne::before,
+.lineOne::after {
+  background: #333;
+  box-shadow: inset 0 1px 3px #ffffff5a;
+}
+
+.lineTwo,
+.lineTwo::before,
+.lineTwo::after {
+  background: #ececec;
+  box-shadow: inset 0 1px 3px #0000005a;
+}
+
+.lineThree,
+.lineThree::before,
+.lineThree::after {
+  background: #62777e;
+  box-shadow: inset 0 1px 3px #0000005a;
+}
+
+.boxOne p.active {
+  box-shadow: inset 3px 3px 7px #1d20235a, inset -3px -3px 7px #ffffff;
+}
+
+.boxTwo p.active {
+  box-shadow: inset 3px 3px 7px #1d2023, inset -3px -3px 7px #ffffff1a;
+}
+
+.boxThree p.active {
+  box-shadow: inset 3px 3px 7px #1d20238a, inset -3px -3px 7px #ffffff7a;
+}
