@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-auth',
@@ -9,7 +9,13 @@ export class AuthComponent implements OnInit {
 
   constructor() { }
 
+
+
   ngOnInit(): void {
+
+  }
+
+  start(): void {
     let switchCtn = document.querySelector("#switch-cnt");
     let switchC1 = document.querySelector("#switch-c1");
     let switchC2 = document.querySelector("#switch-c2");
@@ -49,4 +55,8 @@ export class AuthComponent implements OnInit {
     window.addEventListener("load", mainF);
   }
 
+
+  startButton(){
+    this.start();
+  }
 }

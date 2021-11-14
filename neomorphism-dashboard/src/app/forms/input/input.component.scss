@@ -1,0 +1,272 @@
+$ruler: 16px;
+$color: (
+  bg: #ebecf0,
+  shadow: #babecc,
+  text: #61677c,
+  text-green: rgba(4, 102, 4, 0.877),
+  text-red: rgba(150, 1, 33, 0.877),
+  text-faded: rgba(49, 69, 106, 0.6),
+  white: #fff,
+  red: #ae1100,
+  green: rgba(0, 255, 0, 0.75)
+);
+
+@function color($color-name) {
+  @return map-get($color, $color-name);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  background-color: color(bg);
+}
+
+body,
+p,
+input[type="text"],
+input[type="password"],
+input[type="checkbox"],
+input[type="date"],
+select,
+textarea,
+button {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: -0.2px;
+  font-size: $ruler;
+}
+
+
+
+.container {
+  display: grid;
+  grid-template-columns: 5rem auto 5rem;
+  grid-template-rows: 5rem auto;
+  grid-template-areas:
+    "left-margin header right-margin"
+    "left-margin content right-margin";
+
+  .header {
+    grid-area: header;
+    text-align: center;
+    margin: auto;
+  }
+
+  .content {
+    grid-area: content;
+  }
+}
+
+.bordered {
+  border: 1px solid color(white);
+}
+
+form {
+  padding: $ruler;
+  //   width: $ruler * 20;
+  margin: 0 auto;
+}
+
+
+
+button,
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+  border: 0;
+  outline: 0;
+  vertical-align: text-bottom;
+  border-radius: $ruler * 20;
+  padding: $ruler;
+  color: color(text)-faded;
+  background-color: color(bg);
+  text-shadow: 1px 1px 0 color(white);
+
+  .material-icons {
+    font-size: inherit;
+  }
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+  width: 100%;
+  margin-right: $ruler/2;
+  box-sizing: border-box;
+  box-shadow: inset 2px 2px 5px color(shadow), inset -5px -5px 10px color(white);
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    color: color(text);
+    box-shadow: inset 1px 1px 2px color(shadow),
+    inset -1px -1px 2px color(white);
+  }
+}
+
+button {
+  // color: color(text);
+  font-weight: bold;
+  box-shadow: -5px -5px 20px color(white), 5px 5px 20px color(shadow);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    color: color(text);
+    box-shadow: -2px -2px 5px color(white), 2px 2px 5px color(shadow);
+  }
+
+  &:active {
+    color: color(text);
+    box-shadow: inset 1px 1px 2px color(shadow),
+    inset -1px -1px 2px color(white);
+  }
+
+  .material-icons {
+    margin-right: $ruler/2;
+  }
+
+  &.unit {
+    border-radius: $ruler/2;
+    line-height: 0;
+    width: $ruler * 3;
+    height: $ruler * 3;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    // margin: 0 $ruler/2;
+    margin: 0 $ruler * 0.5;
+    font-size: $ruler * 1.2;
+
+    .material-icons {
+      margin-right: 0;
+    }
+  }
+
+  &.red {
+    display: block;
+    width: 100%;
+    color: color(red);
+  }
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: $ruler * 1.5;
+
+  > .input {
+    margin-bottom: 0;
+  }
+
+  label {
+    margin: 0;
+    flex: 1;
+  }
+}
+
+
+// this is for label
+.input {
+  position: relative;
+  display: block;
+  // margin-bottom: $ruler * 1.5;
+  width: 100%;
+  margin-bottom: $ruler;
+  position: relative;
+
+  &.text,
+  &.password,
+  &.date{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
+    > span {
+      color: color(text);
+      position: absolute;
+      top: $ruler;
+      margin-left: $ruler;
+    }
+
+    textarea ~ span,
+    input[type="text"] ~ span,
+    input[type="password"] ~ span {
+      transition: all 0.3s ease-in-out;
+    }
+
+
+    input[type="text"]:focus ~ span,
+    input[type="password"]:focus ~ span,
+    textarea:focus ~ span,
+    textarea:not(:placeholder-shown) ~ span,
+    input[type="text"]:not(:placeholder-shown) ~ span,
+    input[type="password"]:not(:placeholder-shown) ~ span {
+      transform: translateY(-1.6rem);
+      background-color: color(bg);
+    }
+  }
+  &.select{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    border: 0;
+    outline: 0;
+    vertical-align: text-bottom;
+    border-radius: $ruler * 20;
+    padding: $ruler;
+    color: color(text)-faded;
+    background-color: color(bg);
+    text-shadow: 1px 1px 0 color(white);
+
+    > span {
+      color: color(text);
+      position: absolute;
+      top: $ruler;
+      margin-left: $ruler;
+    }
+
+  }
+
+}
+
+// }
+
+.card {
+  box-sizing: border-box;
+  // border: 1px solid color(white);
+  // background-color: rgba(0, 0, 0, 0.01);
+  border-radius: 15px;
+  padding: $ruler;
+  margin-bottom: $ruler;
+  box-shadow: -5px -5px 20px color(white), 5px 5px 20px color(shadow);
+
+  p {
+    margin: 0;
+    line-height: 2rem;
+    // color: color(text);
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: $ruler * 1.25;
+    padding-left: -$ruler;
+    box-sizing: border-box;
+    // border-bottom: 1px solid color(shadow);
+    width: 100%;
+    padding: $ruler * 0.5 0;
+    margin-bottom: $ruler;
+    text-align: center;
+  }
+}

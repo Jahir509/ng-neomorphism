@@ -5,7 +5,11 @@ import { AuthComponent } from './auth/auth.component';
 const routes: Routes = [
   {
     path:'auth',
-    component:AuthComponent
+    component:AuthComponent,
+  },
+  {
+    path:'forms',
+    loadChildren:()=>import('./forms/forms.module').then(m=>m.FormsModule)
   }
 ];
 

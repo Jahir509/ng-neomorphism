@@ -1,0 +1,216 @@
+$ruler: 16px;
+$color: (
+  bg: #ebecf0,
+  shadow: #babecc,
+  text: #61677c,
+  text-green: rgba(4, 102, 4, 0.877),
+  text-red: rgba(150, 1, 33, 0.877),
+  text-faded: rgba(49, 69, 106, 0.6),
+  white: #fff,
+  red: #ae1100,
+  green: rgba(0, 255, 0, 0.75)
+);
+
+@function color($color-name) {
+  @return map-get($color, $color-name);
+}
+
+div,
+p,
+span {
+  color: color(text);
+  text-shadow: 1px 1px 1px color(white);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 5rem auto 5rem;
+  grid-template-rows: 5rem auto;
+  grid-template-areas:
+    "left-margin header right-margin"
+    "left-margin content right-margin";
+
+  .header {
+    grid-area: header;
+    text-align: center;
+    margin: auto;
+  }
+
+  .content {
+    grid-area: content;
+  }
+}
+
+.bordered {
+  border: 1px solid color(white);
+}
+
+form {
+  padding: $ruler;
+  //   width: $ruler * 20;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+.input {
+  position: relative;
+  display: block;
+  // margin-bottom: $ruler * 1.5;
+  width: 100%;
+  margin-bottom: $ruler;
+  position: relative;
+
+  &.switch {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .switch-title {
+      text-align: left;
+      padding-right: $ruler;
+      padding-bottom: $ruler;
+    }
+
+    > label {
+      display: inline-grid;
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-areas: "notchecked switch checked";
+      min-height: $ruler * 2;
+      // flex-direction: row;
+      justify-items: flex-start;
+      align-items: center;
+      position: relative;
+      overflow-x: auto;
+      width: auto;
+      padding-bottom: $ruler;
+      // margin-bottom: $ruler;
+
+      .switch-label-unchecked {
+        grid-area: notchecked;
+        margin-right: $ruler;
+        color: color(text-red);
+      }
+
+      .switch-label-checked {
+        grid-area: checked;
+        margin-left: $ruler;
+        color: color(text-green);
+      }
+
+      input[type="checkbox"] {
+        grid-area: switch;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        opacity: 1;
+        height: $ruler * 0.5; // $ruler * 2;
+        width: $ruler * 4;
+        border-radius: $ruler;
+        cursor: pointer;
+        background-color: color(red);
+        // outline: 1px solid red;
+        // margin-left: $ruler;
+        // margin-right: $ruler;
+        // border: 1px solid rgba(255,255,255,0.7);
+        // box-shadow: inset 2px 2px 5px color(shadow), inset -5px -5px 10px color(white);
+        // transition: all 0.3s ease-in-out;
+
+        &:checked {
+          background-color: color(green);
+          // box-shadow: inset 4px 4px 8px color(shadow);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          // outline: 1px solid green;
+          line-height: 0;
+          width: $ruler * 2 - 5;
+          height: $ruler * 2 - 5;
+          margin: 0;
+          // left: 0;
+          // right: auto;
+          border-radius: 50%;
+          font-size: $ruler * 1;
+          box-shadow: inset 5px 5px 10px color(white),
+          inset -5px -5px 10px color(shadow);
+          background-color: color(bg);
+          transition: all 0.3s ease-in-out;
+          transform: translateX(-100%);
+        }
+
+        &:checked::before {
+          transform: translateX(100%);
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+  &.radio {
+    .radio-title {
+      text-align: left;
+      padding-right: $ruler;
+      padding-top: $ruler * 0.5;
+      width: 100%;
+    }
+
+    .input-radio-group {
+      width: 100%;
+    }
+
+    input[type="radio"] {
+      border-radius: 50%;
+
+      &::before {
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+
+.card {
+  box-sizing: border-box;
+  border-radius: 15px;
+  padding: $ruler;
+  margin-bottom: $ruler;
+  box-shadow: -5px -5px 20px color(white), 5px 5px 20px color(shadow);
+
+  p {
+    margin: 0;
+    line-height: 2rem;
+    // color: color(text);
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: $ruler * 1.25;
+    padding-left: -$ruler;
+    box-sizing: border-box;
+    // border-bottom: 1px solid color(shadow);
+    width: 100%;
+    padding: $ruler * 0.5 0;
+    margin-bottom: $ruler;
+    text-align: center;
+  }
+}
